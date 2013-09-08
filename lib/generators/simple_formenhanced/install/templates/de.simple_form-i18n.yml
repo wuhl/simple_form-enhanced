@@ -1,0 +1,17 @@
+# de.simple_form-i18n.yml
+de:
+  simple_form:
+    creating: "Anlegen..."
+    updating: 'Aktualisieren...'
+    buttons:
+      or: 'oder'
+      cancel: 'Abbrechen'
+
+  helpers:
+    submit:
+      create: "%{model} anlegen"
+      update: "%{model} speichern"
+    links:
+      show: "Zeigen"
+    titles:
+      index: "%{model} Übersicht"
