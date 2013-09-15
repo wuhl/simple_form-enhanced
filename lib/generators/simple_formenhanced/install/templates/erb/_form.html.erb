@@ -1,9 +1,20 @@
+<%- create_file "config/locales/de/de.model.#{singular_table_name}.yml", 
+    "# de.model.#{singular_table_name}.yml\n"+
+    "de:\n" +
+    "  activerecord:\n" +
+    "    models:\n" +
+    "      #{singular_table_name}:\n" +
+    "        one: \"#{singular_table_name}\"\n" +
+    "        other: \"#{plural_table_name}\"\n" +
+    "    attributes:\n" +
+    "      #{singular_table_name}:\n" -%>
 <%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
   <%%= f.error_notification %>
 
   <div class="form-inputs">
   <%- attributes.each do |attribute| -%>
     <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %><%= attribute.type.in?([:date]) ? ", :input_html => { :size => 10, :maxlength => 10, :language => I18n.locale }, as: :date_picker" : "" %> %>
+    <%- append_to_file "config/locales/de/de.model.#{singular_table_name}.yml", "        #{attribute.name}: \"#{attribute.name}\"\n" -%>
   <%- end -%>
   </div>
 
