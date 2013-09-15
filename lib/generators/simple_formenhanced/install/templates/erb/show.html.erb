@@ -3,7 +3,7 @@
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
 <p>
   <strong><%%= t('activerecord.attributes.<%= singular_table_name %>.<%= attribute.name %>') %>:</strong>
-  <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+  <%%= <%= attribute.type.in?([:date]) ? "l " : "" %>@<%= singular_table_name %>.<%= attribute.name %> %>
 </p>
 <%- end -%>
 

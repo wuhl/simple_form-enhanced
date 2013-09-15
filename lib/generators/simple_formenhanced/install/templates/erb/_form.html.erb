@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
   <%- attributes.each do |attribute| -%>
-    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
+    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %><%= attribute.type.in?([:date]) ? ", :input_html => { :size => 10, :maxlength => 10, :language => I18n.locale }, as: :date_picker" : "" %> %>
   <%- end -%>
   </div>
 

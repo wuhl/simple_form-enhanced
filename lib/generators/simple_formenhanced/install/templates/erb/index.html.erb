@@ -14,7 +14,7 @@
     <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
       <tr>
       <% attributes.reject(&:password_digest?).each do |attribute| -%>
-        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+        <td><%%= <%= attribute.type.in?([:date]) ? "l " : "" %><%= singular_table_name %>.<%= attribute.name %> %></td>
       <% end -%>
       <td><%%= link_to t('helpers.links.show'), <%= singular_table_name %> %></td>
       <td><%%= link_to t('helpers.links.edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
