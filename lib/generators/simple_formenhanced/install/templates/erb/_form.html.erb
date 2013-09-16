@@ -1,4 +1,13 @@
-<%- create_file "config/locales/de/de.model.#{singular_table_name}.yml", 
+<%-
+  if File.exist? "app/views/layouts/_menu.html.erb"
+    insert_into_file "app/views/layouts/_menu.html.erb",
+      "    \<\%= drop_down t(\'activerecord.models.#{singular_table_name}.other\') do \%\>\n" +
+      "      \<\%= menu_item t(\'helpers.titles.index\', model: #{singular_table_name.camelize}.model_name.human( :count => 2 ) ), #{plural_table_name}_path \%\>\n" + 
+      "      \<\%= menu_item t(\'helpers.titles.new\', model: #{singular_table_name.camelize}.model_name.human), new_#{singular_table_name}_path \%\>\n" +
+      "    \<\% end \%\>\n",
+      :before => "    \<\%= menu_item t(\'menu.about\'), page_path(\'about\') \%\>"
+  end
+  create_file "config/locales/de/de.model.#{singular_table_name}.yml", 
     "# de.model.#{singular_table_name}.yml\n"+
     "de:\n" +
     "  activerecord:\n" +
@@ -7,7 +16,8 @@
     "        one: \"#{singular_table_name}\"\n" +
     "        other: \"#{plural_table_name}\"\n" +
     "    attributes:\n" +
-    "      #{singular_table_name}:\n" -%>
+    "      #{singular_table_name}:\n" 
+-%>
 <%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
   <%%= f.error_notification %>
 
