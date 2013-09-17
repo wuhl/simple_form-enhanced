@@ -16,7 +16,8 @@
     "        one: \"#{singular_table_name}\"\n" +
     "        other: \"#{plural_table_name}\"\n" +
     "    attributes:\n" +
-    "      #{singular_table_name}:\n" 
+    "      #{singular_table_name}:\n"
+  gsub_file "config/routes.rb", "# root 'welcome#index'\n", "root '#{plural_table_name}#index'"
 -%>
 <%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
   <%%= f.error_notification %>
