@@ -18,7 +18,7 @@
       <% end -%>
       <td><%%= link_to t('helpers.links.show'), <%= singular_table_name %> %></td>
       <td><%%= link_to t('helpers.links.edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
-      <td><%%= link_to t('helpers.links.destroy'), <%= singular_table_name %>, :confirm => t('helpers.links.confirm'), :method => :delete %></td>
+      <td><%%= link_to t('helpers.links.destroy'), <%= singular_table_name %>, data: { confirm: t('helpers.links.confirm') }, :method => :delete %></td>
       </tr>
     <%% end %>
   </tbody>
