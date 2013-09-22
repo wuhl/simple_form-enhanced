@@ -1,5 +1,7 @@
 <h1><%%= t('helpers.titles.show', model: <%= singular_table_name.camelize %>.model_name.human ) %></h1>
 
+<p id="notice"><%%= notice %></p>
+
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
 <p>
   <strong><%%= t('activerecord.attributes.<%= singular_table_name %>.<%= attribute.name %>') %>:</strong>

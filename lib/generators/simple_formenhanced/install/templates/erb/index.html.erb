@@ -6,19 +6,21 @@
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
       <th><%%= t('activerecord.attributes.<%= singular_table_name %>.<%= attribute.name %>') %></th>
 <% end -%>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
       <tr>
-      <% attributes.reject(&:password_digest?).each do |attribute| -%>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
         <td><%%= <%= attribute.type.in?([:date]) ? "l " : "" %><%= singular_table_name %>.<%= attribute.name %> %></td>
-      <% end -%>
-      <td><%%= link_to t('helpers.links.show'), <%= singular_table_name %> %></td>
-      <td><%%= link_to t('helpers.links.edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
-      <td><%%= link_to t('helpers.links.destroy'), <%= singular_table_name %>, data: { confirm: t('helpers.links.confirm') }, :method => :delete %></td>
+<% end -%>
+        <td><%%= link_to t('helpers.links.show'), <%= singular_table_name %> %></td>
+        <td><%%= link_to t('helpers.links.edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
+        <td><%%= link_to t('helpers.links.destroy'), <%= singular_table_name %>, data: { confirm: t('helpers.links.confirm') }, :method => :delete %></td>
       </tr>
     <%% end %>
   </tbody>

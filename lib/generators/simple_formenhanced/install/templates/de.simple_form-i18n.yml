@@ -6,25 +6,3 @@ de:
     buttons:
       or: 'oder'
       cancel: 'Abbrechen'
-
-  helpers:
-    actions: "Aktionen"
-    submit:
-      create: "%{model} anlegen"
-      update: "%{model} speichern"
-    links:
-      back: "Zurück"
-      cancel: "Abbrechen"
-      confirm: "Sind Sie sicher?"
-      destroy: "Löschen"
-      new: "Neu"
-      edit: "Bearbeiten"
-      show: "Zeigen"
-      view_all: "Übersicht"
-    titles:
-      index: "Übersicht %{model}"
-      edit: "%{model} bearbeiten"
-      save: "%{model} speichern"
-      new: "%{model} anlegen"
-      delete: "%{model} löschen"
-      show: "%{model} anzeigen"

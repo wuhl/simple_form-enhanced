@@ -17,18 +17,16 @@
     "        other: \"#{plural_table_name}\"\n" +
     "    attributes:\n" +
     "      #{singular_table_name}:\n"
-  gsub_file "config/routes.rb", "# root 'welcome#index'\n", "root '#{plural_table_name}#index'"
+  gsub_file "config/routes.rb", "# root 'welcome#index'\n", "root '#{plural_table_name}#index'\n"
 -%>
 <%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
   <%%= f.error_notification %>
-
   <div class="form-inputs">
   <%- attributes.each do |attribute| -%>
     <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %><%= attribute.type.in?([:date]) ? ", :input_html => { :size => 10, :maxlength => 10, :language => I18n.locale }, as: :date_picker" : "" %> %>
     <%- append_to_file "config/locales/de/de.model.#{singular_table_name}.yml", "        #{attribute.name}: \"#{attribute.name}\"\n" -%>
   <%- end -%>
   </div>
-
   <div class="form-actions">
     <%%= f.button :submit %>
   </div>
