@@ -10,6 +10,10 @@ module SimpleFormenhanced
 			class_option :template_engine, :default => 'erb', desc: 'Template engine to be invoked (erb, haml or slim).'
 
       def run_other_generators
+        engine = options[:template_engine]
+        if File.exist? "lib/templates/#{engine}/scaffold/_form.html.#{engine}"
+          FileUtils.remove "lib/templates/#{engine}/scaffold/_form.html.#{engine}"
+        end
         generate "simple_form:install --bootstrap"
       end
 
@@ -21,7 +25,10 @@ module SimpleFormenhanced
 
 			def copy_scaffold_template
         engine = options[:template_engine]
-        # copy_file "#{engine}/_form.html.#{engine}", "lib/templates/#{engine}/scaffold/_form.html.#{engine}"
+        # if File.exist? "lib/templates/#{engine}/scaffold/_form.html.#{engine}"
+        #   FileUtils.remove "lib/templates/#{engine}/scaffold/_form.html.#{engine}"
+        #   copy_file "#{engine}/_form.html.#{engine}", "lib/templates/#{engine}/scaffold/_form.html.#{engine}"
+        # end
         copy_file "#{engine}/edit.html.#{engine}", "lib/templates/#{engine}/scaffold/edit.html.#{engine}"
         if File.exist? "lib/templates/#{engine}/scaffold/index.html.#{engine}"
           FileUtils.remove "lib/templates/#{engine}/scaffold/index.html.#{engine}"
@@ -33,7 +40,10 @@ module SimpleFormenhanced
           end
         end
         copy_file "#{engine}/new.html.#{engine}", "lib/templates/#{engine}/scaffold/new.html.#{engine}"
-        copy_file "#{engine}/show.html.#{engine}", "lib/templates/#{engine}/scaffold/show.html.#{engine}"
+        if File.exist? "lib/templates/#{engine}/scaffoldshow.html.#{engine}/"
+          FileUtils.remove "lib/templates/#{engine}/scaffoldshow.html.#{engine}/"
+          copy_file "#{engine}/show.html.#{engine}", "lib/templates/#{engine}/scaffold/show.html.#{engine}"
+        end
         if File.exist? "lib/templates/#{engine}/scaffold/_form.html.#{engine}" and File.exist? "app/inputs/date_picker_input.rb"
           FileUtils.remove "lib/templates/#{engine}/scaffold/_form.html.#{engine}"
           copy_file "#{engine}/_form.html.#{engine}", "lib/templates/#{engine}/scaffold/_form.html.#{engine}"
