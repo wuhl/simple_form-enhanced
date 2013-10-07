@@ -40,8 +40,8 @@ module SimpleFormenhanced
           end
         end
         copy_file "#{engine}/new.html.#{engine}", "lib/templates/#{engine}/scaffold/new.html.#{engine}"
-        if File.exist? "lib/templates/#{engine}/scaffoldshow.html.#{engine}/"
-          FileUtils.remove "lib/templates/#{engine}/scaffoldshow.html.#{engine}/"
+        if File.exist? "lib/templates/#{engine}/scaffold/show.html.#{engine}/"
+          FileUtils.remove "lib/templates/#{engine}/scaffold/show.html.#{engine}/"
           copy_file "#{engine}/show.html.#{engine}", "lib/templates/#{engine}/scaffold/show.html.#{engine}"
         end
         if File.exist? "lib/templates/#{engine}/scaffold/_form.html.#{engine}" and File.exist? "app/inputs/date_picker_input.rb"
