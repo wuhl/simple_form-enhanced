@@ -38,6 +38,7 @@ module SimpleFormenhanced
           FileUtils.remove "lib/templates/#{engine}/scaffold/_form.html.#{engine}"
           copy_file "#{engine}/_form.html.#{engine}", "lib/templates/#{engine}/scaffold/_form.html.#{engine}"
         end
+        copy_file "#{engine}/_messages.html.#{engine}", "app/views/layouts/_messages,html.#{engine}"
       end
     end
   end
